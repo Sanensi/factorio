@@ -1,0 +1,9 @@
+{
+  "include": ["src", "data"],
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["ESNext"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+  }
+}
