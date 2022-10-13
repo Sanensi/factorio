@@ -16,6 +16,10 @@ if (search_result.length === 1) {
       name,
       unitPerSecond.numerator / unitPerSecond.denominator,
     ]),
+    outputs: report.outputs.map(([name, unitPerSecond]) => [
+      name,
+      unitPerSecond.numerator / unitPerSecond.denominator,
+    ]),
   };
   console.log(display);
 } else {
