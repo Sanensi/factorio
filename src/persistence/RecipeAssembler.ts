@@ -1,7 +1,7 @@
 import assert from "assert";
 import {
   Recipe,
-  recipeName,
+  itemName,
   Category,
   Second,
   second,
@@ -32,7 +32,7 @@ export class RecipeAssembler {
 
   public toRecipe(recipe: JSONRecipe): Recipe {
     return {
-      name: recipeName(recipe.name),
+      name: itemName(recipe.name),
       category: this.toCategory(recipe.category),
       craftingTime: this.toCraftingTime(recipe),
       ingredients: this.toIngredients(recipe),
@@ -77,9 +77,9 @@ export class RecipeAssembler {
         typeof ingredient[0] === "string" && typeof ingredient[1] === "number"
       );
 
-      return [recipeName(ingredient[0]), quantity(ingredient[1])];
+      return [itemName(ingredient[0]), quantity(ingredient[1])];
     } else {
-      return [recipeName(ingredient.name), quantity(ingredient.amount)];
+      return [itemName(ingredient.name), quantity(ingredient.amount)];
     }
   }
 

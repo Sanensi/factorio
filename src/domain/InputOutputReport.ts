@@ -1,5 +1,5 @@
 import { Producer } from "./Producer";
-import { quantity, Quantity, RecipeName, second, Second } from "./Recipe";
+import { quantity, Quantity, ItemName, second, Second } from "./Recipe";
 
 type Rational<N extends number, D extends number> = {
   numerator: N;
@@ -17,8 +17,8 @@ export const unitPerSecond = (
 });
 
 export type InputOutputReport = Readonly<{
-  for: RecipeName;
+  for: ItemName;
   with: Producer;
-  inputs: ReadonlyArray<[RecipeName, UnitPerSecond]>;
-  outputs: ReadonlyArray<[RecipeName, UnitPerSecond]>;
+  inputs: ReadonlyArray<[ItemName, UnitPerSecond]>;
+  outputs: ReadonlyArray<[ItemName, UnitPerSecond]>;
 }>;

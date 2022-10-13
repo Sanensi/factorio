@@ -1,6 +1,6 @@
 import JSONRecipes from "../../data/recipes.json";
 
-import { Recipe, RecipeName, RecipeRepository } from "../domain/Recipe";
+import { Recipe, ItemName, RecipeRepository } from "../domain/Recipe";
 import { DefaultValues, RecipeAssembler } from "./RecipeAssembler";
 
 const defaultValues: DefaultValues = {
@@ -10,7 +10,7 @@ const defaultValues: DefaultValues = {
 };
 
 export class JSONRecipeRepository implements RecipeRepository {
-  private readonly recipes = new Map<RecipeName, Recipe>();
+  private readonly recipes = new Map<ItemName, Recipe>();
   private readonly assembler = new RecipeAssembler(defaultValues);
 
   constructor(recipes = JSONRecipes) {
@@ -20,7 +20,7 @@ export class JSONRecipeRepository implements RecipeRepository {
     });
   }
 
-  get(name: RecipeName): Readonly<Recipe> {
+  get(name: ItemName): Readonly<Recipe> {
     const recipe = this.recipes.get(name);
 
     if (recipe === undefined)

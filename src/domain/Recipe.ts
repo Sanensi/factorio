@@ -1,10 +1,10 @@
 import assert from "assert/strict";
 
-const recipeNameSymbol = Symbol("Recipe Name");
+const itemNameSymbol = Symbol("Item Name");
 const secondSymbol = Symbol("Second");
 const quantitySymbol = Symbol("Quantity");
 
-export type RecipeName = string & { [recipeNameSymbol]: never };
+export type ItemName = string & { [itemNameSymbol]: never };
 export type Category =
   | "crafting"
   | "advanced-crafting"
@@ -16,10 +16,10 @@ export type Category =
   | "centrifuging";
 export type Second = number & { [secondSymbol]: never };
 export type Quantity = number & { [quantitySymbol]: never };
-export type Ingredient = [RecipeName, Quantity];
+export type Ingredient = [ItemName, Quantity];
 
-export const recipeName = (name: string) => {
-  return name as RecipeName;
+export const itemName = (name: string) => {
+  return name as ItemName;
 };
 
 export const second = (second: number) => {
@@ -34,7 +34,7 @@ export const quantity = (quantity: number) => {
 };
 
 export type Recipe = Readonly<{
-  name: RecipeName;
+  name: ItemName;
   category: Category;
   craftingTime: Second;
   ingredients: ReadonlyArray<Ingredient>;
@@ -42,5 +42,5 @@ export type Recipe = Readonly<{
 }>;
 
 export interface RecipeRepository {
-  get(name: RecipeName): Recipe;
+  get(name: ItemName): Recipe;
 }

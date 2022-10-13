@@ -1,4 +1,4 @@
-import { quantity, Recipe, recipeName, second } from "../domain/Recipe";
+import { quantity, Recipe, itemName, second } from "../domain/Recipe";
 import { JSONRecipeRepository } from "./JSONRecipeRepository";
 import { JSONRecipe } from "./RecipeAssembler";
 
@@ -12,7 +12,7 @@ describe("Default values", () => {
     };
     const repository = new JSONRecipeRepository([minimalRecipe]);
 
-    const recipe = repository.get(recipeName(minimalRecipe.name));
+    const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.category).toBe("crafting");
   });
@@ -26,7 +26,7 @@ describe("Default values", () => {
     };
     const repository = new JSONRecipeRepository([minimalRecipe]);
 
-    const recipe = repository.get(recipeName(minimalRecipe.name));
+    const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.craftingTime).toBe(second(0.5));
   });
@@ -40,7 +40,7 @@ describe("Default values", () => {
     };
     const repository = new JSONRecipeRepository([minimalRecipe]);
 
-    const recipe = repository.get(recipeName(minimalRecipe.name));
+    const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.resultCount).toBe(quantity(1));
   });
@@ -63,13 +63,13 @@ describe(`
     };
     const repository = new JSONRecipeRepository([rawRecipe]);
 
-    const recipe = repository.get(recipeName(rawRecipe.name));
+    const recipe = repository.get(itemName(rawRecipe.name));
 
     expect(recipe).toEqual({
-      name: recipeName("iron-plate"),
+      name: itemName("iron-plate"),
       category: "smelting",
       craftingTime: second(3.2),
-      ingredients: [[recipeName("iron-ore"), quantity(1)]],
+      ingredients: [[itemName("iron-ore"), quantity(1)]],
       resultCount: quantity(1),
     } as Recipe);
   });
@@ -87,15 +87,15 @@ describe(`
     };
     const repository = new JSONRecipeRepository([rawRecipe]);
 
-    const recipe = repository.get(recipeName(rawRecipe.name));
+    const recipe = repository.get(itemName(rawRecipe.name));
 
     expect(recipe).toEqual({
-      name: recipeName("automation-science-pack"),
+      name: itemName("automation-science-pack"),
       category: "crafting",
       craftingTime: second(5),
       ingredients: [
-        [recipeName("copper-plate"), quantity(1)],
-        [recipeName("iron-gear-wheel"), quantity(1)],
+        [itemName("copper-plate"), quantity(1)],
+        [itemName("iron-gear-wheel"), quantity(1)],
       ],
       resultCount: quantity(1),
     } as Recipe);
@@ -114,15 +114,15 @@ describe(`
     };
     const repository = new JSONRecipeRepository([rawRecipe]);
 
-    const recipe = repository.get(recipeName(rawRecipe.name));
+    const recipe = repository.get(itemName(rawRecipe.name));
 
     expect(recipe).toEqual({
-      name: recipeName("transport-belt"),
+      name: itemName("transport-belt"),
       category: "crafting",
       craftingTime: second(0.5),
       ingredients: [
-        [recipeName("iron-plate"), quantity(1)],
-        [recipeName("iron-gear-wheel"), quantity(1)],
+        [itemName("iron-plate"), quantity(1)],
+        [itemName("iron-gear-wheel"), quantity(1)],
       ],
       resultCount: quantity(2),
     } as Recipe);
@@ -153,15 +153,15 @@ describe(`
     };
     const repository = new JSONRecipeRepository([rawRecipe]);
 
-    const recipe = repository.get(recipeName(rawRecipe.name));
+    const recipe = repository.get(itemName(rawRecipe.name));
 
     expect(recipe).toEqual({
-      name: recipeName("electronic-circuit"),
+      name: itemName("electronic-circuit"),
       category: "crafting",
       craftingTime: second(0.5),
       ingredients: [
-        [recipeName("iron-plate"), quantity(1)],
-        [recipeName("copper-cable"), quantity(3)],
+        [itemName("iron-plate"), quantity(1)],
+        [itemName("copper-cable"), quantity(3)],
       ],
       resultCount: quantity(1),
     } as Recipe);
@@ -192,16 +192,16 @@ describe(`
     };
     const repository = new JSONRecipeRepository([rawRecipe]);
 
-    const recipe = repository.get(recipeName(rawRecipe.name));
+    const recipe = repository.get(itemName(rawRecipe.name));
 
     expect(recipe).toEqual({
-      name: recipeName("burner-mining-drill"),
+      name: itemName("burner-mining-drill"),
       category: "crafting",
       craftingTime: second(2),
       ingredients: [
-        [recipeName("iron-gear-wheel"), quantity(3)],
-        [recipeName("stone-furnace"), quantity(1)],
-        [recipeName("iron-plate"), quantity(3)],
+        [itemName("iron-gear-wheel"), quantity(3)],
+        [itemName("stone-furnace"), quantity(1)],
+        [itemName("iron-plate"), quantity(3)],
       ],
       resultCount: quantity(1),
     } as Recipe);
