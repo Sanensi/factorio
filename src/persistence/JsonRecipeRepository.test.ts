@@ -3,43 +3,27 @@ import { JSONRecipeRepository } from "./JSONRecipeRepository";
 import { JSONRecipe } from "./RecipeAssembler";
 
 describe("Default values", () => {
-  test("The default category is crafting", () => {
-    const minimalRecipe: JSONRecipe = {
-      type: "recipe",
-      name: "minimal-recipe",
-      ingredients: [],
-      result: "anything",
-    };
-    const repository = new JSONRecipeRepository([minimalRecipe]);
+  const minimalRecipe: JSONRecipe = {
+    type: "recipe",
+    name: "minimal-recipe",
+    ingredients: [],
+    result: "anything",
+  };
+  const repository = new JSONRecipeRepository([minimalRecipe]);
 
+  test("The default category is crafting", () => {
     const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.category).toBe("crafting");
   });
 
   test("The default crafting time is 0.5", () => {
-    const minimalRecipe: JSONRecipe = {
-      type: "recipe",
-      name: "minimal-recipe",
-      ingredients: [],
-      result: "anything",
-    };
-    const repository = new JSONRecipeRepository([minimalRecipe]);
-
     const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.craftingTime).toBe(second(0.5));
   });
 
   test("The default result count is 1", () => {
-    const minimalRecipe: JSONRecipe = {
-      type: "recipe",
-      name: "minimal-recipe",
-      ingredients: [],
-      result: "anything",
-    };
-    const repository = new JSONRecipeRepository([minimalRecipe]);
-
     const recipe = repository.get(itemName(minimalRecipe.name));
 
     expect(recipe.resultCount).toBe(quantity(1));
@@ -47,7 +31,8 @@ describe("Default values", () => {
 });
 
 describe(`
-  A basic recipe is one that has a name,
+  A basic recipe is one that has
+  a name,
   a category,
   the energy required to execute it in seconds,
   a list of ingredients as input
@@ -168,7 +153,7 @@ describe(`
   });
 
   test("burner-mining-drill", () => {
-    const rawRecipe = {
+    const rawRecipe: JSONRecipe = {
       type: "recipe",
       name: "burner-mining-drill",
       normal: {
