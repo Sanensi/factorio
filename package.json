@@ -5,7 +5,7 @@
     "factorio": "bin/factorio.js"
   },
   "scripts": {
-    "build": "esbuild src/ui/index.ts --bundle --platform=node --outfile=bin/factorio.js",
+    "build": "esbuild src/cli/index.ts --bundle --platform=node --outfile=bin/factorio.js",
     "test": "jest"
   },
   "devDependencies": {
